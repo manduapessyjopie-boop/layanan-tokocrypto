@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pusat Bantuan | Tokocrypto</title>
+    <!-- Google Fonts & Font Awesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #27ad75;
+            --primary-hover: #1f8a5d;
+            --bg-dark: #12161c;
+            --bg-card: #1e2329;
+            --text-light: #f0b90b;
+            --text-main: #eaecef;
+            --text-muted: #848e9c;
+            --border-color: #2b313a;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* Header / Navbar */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 8%;
+            background-color: var(--bg-card);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            margin-left: 1.5rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero & Search Section */
+        .hero {
+            text-align: center;
+            padding: 4rem 1rem;
+            background: linear-gradient(180deg, #181e25 0%, var(--bg-dark) 100%);
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .search-box {
+            position: relative;
+            max-width: 600px;
+            margin: 1.5rem auto 0;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 1rem 1.2rem 1rem 3rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            background-color: var(--bg-card);
+            color: var(--text-main);
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .search-box input:focus {
+            border-color: var(--primary-color);
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+        }
+
+        /* Categories Section */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 3rem 1rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-main);
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-decoration: none;
+            color: var(--text-main);
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary-color);
+        }
+
+        .card i {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* FAQ Section */
+        .faq-item {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-answer {
+            padding: 0 1.2rem 1.2rem;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            display: none;
+            border-top: 1px solid var(--border-color);
+            margin-top: 0.5rem;
+            padding-top: 1rem;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        /* Contact Banner */
+        .contact-banner {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .contact-banner h2 {
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-banner p {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 0.8rem 1.8rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border-color);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <a href="#" class="logo">
+            <i class="fa-solid fa-coins"></i> Tokocrypto Help
+        </a>
+        <nav class="nav-links">
+            <a href="#">Buka Tiket</a>
+            <a href="#">Status Sistem</a>
+            <a href="#">Masuk ke Tokocrypto</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Ada yang bisa kami bantu?</h1>
+        <div class="search-box">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" placeholder="Cari panduan, deposit, verifikasi KYC...">
+        </div>
+    </section>
+
+    <!-- Main Container -->
+    <main class="container">
+
+        <!-- Kategori Bantuan -->
+        <h2 class="section-title">Kategori Bantuan</h2>
+        <div class="categories-grid">
+            <a href="#" class="card">
+                <i class="fa-solid fa-user-shield"></i>
+                <h3>Verifikasi Akun (KYC)</h3>
+                <p>Panduan verifikasi identitas & keamanan akun Anda.</p>
+            </a>
+            <a href="#" class="card">
+                <i class="fa-solid fa-wallet"></i>
+                <h3>Deposit & Penarikan</h3>
+                <p>Cara melakukan deposit Rupiah, Kripto, dan penarikan dana.</p>
+            </a>
+            <a href="#" class="card">
+                <i class="fa-solid fa-chart-line"></i>
+                <h3>Perdagangan (Trading)</h3>
+                <p>Panduan beli, jual, Limit Order, dan Stop-Limit.</p>
+            </a>
+            <a href="#" class="card">
+                <i class="fa-solid fa-lock"></i>
+                <h3>Keamanan & 2FA</h3>
+                <p>Pengaturan Google Authenticator, SMS 2FA, dan Reset Password.</p>
+            </a>
+        </div>
+
+        <!-- Pertanyaan Sering Diajukan (FAQ) -->
+        <h2 class="section-title">Pertanyaan Sering Diajukan</h2>
+        
+        <div class="faq-item">
+            <div class="faq-question">
+                Berapa lama proses verifikasi KYC Tokocrypto?
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+                Proses verifikasi KYC Lvl 1 biasanya membutuhkan waktu 1x24 jam kerja setelah dokumen berhasil diunggah dengan jelas.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                Bagaimana jika deposit Rupiah saya belum masuk?
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+                Pastikan nama rekening bank yang digunakan sesuai dengan nama akun Tokocrypto. Jika menggunakan Virtual Account, proses biasanya instan hingga maksimal 30 menit.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                Apakah Tokocrypto menyediakan layanan Call Center via telepon?
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+                <strong>Tidak.</strong> Tokocrypto tidak memiliki layanan nomor telepon/WhatsApp resmi. Hindari penipuan yang mengatasnamakan customer service Tokocrypto via telepon.
+            </div>
+        </div>
+
+        <!-- Contact Banner -->
+        <div class="contact-banner">
+            <h2>Belum menemukan jawaban?</h2>
+            <p>Tim dukungan pelanggan kami siap membantu Anda 24/7 melalui Live Chat atau Sistem Tiket Resmi.</p>
+            <a href="#" class="btn-primary">Hubungi Customer Service</a>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        &copy; 2026 PT Crypto Indonesia Berkat (Tokocrypto). All rights reserved.
+    </footer>
+
+    <!-- JavaScript untuk Accordion FAQ -->
+    <script>
+        document.querySelectorAll('.faq-question').forEach(item => {
+            item.addEventListener('click', () => {
+                const parent = item.parentElement;
+                parent.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>
